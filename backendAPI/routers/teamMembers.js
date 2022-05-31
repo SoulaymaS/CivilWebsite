@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { ModuleResolutionKind } = require('typescript');
-const { TeamMember, TeamMember } = require('../models/teamMember');
+const { TeamMember } = require('../models/teamMember');
 
 //Create new employee
 router.post('/add', async(req, res) => {
