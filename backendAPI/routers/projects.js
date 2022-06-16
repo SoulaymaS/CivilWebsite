@@ -5,10 +5,10 @@ const { Project } = require('../models/project');
 router.post('/addProject', async(req, res) => {
     let project = new Project(req.body);
     try {
-        project = await Project.save();
+        project = await project.save();
         return res.send(project)
     } catch (error) {
-        res.send(405).send(error.message);
+        res.sendStatus(405).send(error.message);
     }
 });
 router.get('/allProject', async(req, res) => {

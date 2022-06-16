@@ -8,7 +8,7 @@ router.post('/add', async(req, res) => {
         teamMember = await teamMember.save();
         return res.send(teamMember)
     } catch (error) {
-        res.send(405).send(error.message);
+        res.sendStatus(405).send(error.message);
     }
 });
 router.get('/all', async(req, res) => {
