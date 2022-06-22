@@ -1,4 +1,5 @@
-require('./database/connectToDb')
+require('dotenv').config();
+require('./database/connectToDb');
 const express = require('express');
 const router_team = require('./routers/teamMembers');
 const router_project= require('./routers/projects');

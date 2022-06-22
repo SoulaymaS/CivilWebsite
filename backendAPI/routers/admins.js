@@ -1,5 +1,5 @@
 const router=require('express').Router();
-const {Admin} =require('../models/admin');
+const Admin =require('../models/admin');
 const Joi=require("joi");
 const bcrypt= require("bcrypt");
 const jwt=require("jsonwebtoken");
@@ -27,7 +27,6 @@ router.post('/registerAdmin',async(req,res)=>{
     // verify is the admin already exists
     const emailExists = await Admin.findOne({email: req.body.email});
     if (emailExists) return res.statys(400).send("Email already exists");
-
     //Hash password
     const salt= await bcrypt.genSalt(10);
     const hashedPassword= await bcrypt.hash(req.body.password,salt);
@@ -63,7 +62,6 @@ if (!validPassword) return res.status(400).send("Invalid password!")
 //create token 
 const token = jwt.sign({_id: admin._id }, process.env.TOKEN_SECRET);
 res.header("auth-token",token).send(token);
-res.send("Logged In");
 });
 
 
